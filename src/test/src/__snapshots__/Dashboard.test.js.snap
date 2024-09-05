@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Snapshot should render correctly 1`] = `
+<div
+  className="dashboard"
+>
+  <h3
+    className="center"
+  >
+    New Questions
+  </h3>
+  <div
+    className="questions-section"
+  >
+    <div
+      className="questions-list"
+    />
+  </div>
+  <h3
+    className="center"
+  >
+    Answered Questions
+  </h3>
+  <div
+    className="questions-section"
+  >
+    <div
+      className="questions-list"
+    >
+      <div>
+        <div
+          className="question-card"
+        >
+          <div
+            className="author-info"
+          >
+            <img
+              alt="Avatar of Sarah Edo"
+              src="https://tylermcginnis.com/would-you-rather/sarah.jpg"
+            />
+            <h4>
+              Sarah Edo
+            </h4>
+          </div>
+          <p
+            className="timestamp"
+          >
+            6:21:AM | 6/29/2016
+          </p>
+          <p
+            className="question-text"
+          >
+            Build our new application with Javascript
+             or...
+          </p>
+          <a
+            className="show-button"
+            href="/questions/8xf0y6ziyjabvozdd253nd"
+            onClick={[Function]}
+          >
+            Show
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
