@@ -8,7 +8,6 @@ const Login = ({ users, dispatch }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Retrieve the stored location or default to the homepage
   const { from } = location.state || { from: { pathname: "/" } };
 
   const handleChange = (e) => {
@@ -19,11 +18,9 @@ const Login = ({ users, dispatch }) => {
     e.preventDefault();
     dispatch(setAuthedUser(selectedUser));
 
-    // Store the redirect path in localStorage for future logins
     const redirectAfterLogin = localStorage.getItem("redirectAfterLogin") || from.pathname;
-    localStorage.removeItem("redirectAfterLogin"); // Clear the redirect path after use
+    localStorage.removeItem("redirectAfterLogin"); 
 
-    // Redirect to the stored or intended location
     navigate(redirectAfterLogin);
   };
 

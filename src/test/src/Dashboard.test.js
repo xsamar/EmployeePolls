@@ -38,7 +38,6 @@ describe('Dashboard Snapshot', () => {
             text: 'Build our new application with Typescript',
           },
         },
-        // Add more questions if needed
       },
     };
 

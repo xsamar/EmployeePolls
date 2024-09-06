@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 import Poll from "./Poll";
 
 const Dashboard = ({ answered, unanswered }) => {
-  // State to toggle between unanswered and answered questions
   const [showAnswered, setShowAnswered] = useState(false);
 
   return (
     <div className="dashboard">
       <h3 className="center">Questions</h3>
 
-      {/* Segment control */}
       <div className="segment-control">
         <button
           className={!showAnswered ? "active" : ""}

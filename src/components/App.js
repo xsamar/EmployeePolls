@@ -9,12 +9,12 @@ import Leaderboard from "./Leaderboard";
 import PollDetails from "./PollDetails";
 import Nav from "./Nav";
 import Login from "./Login";
-import NotFound from "./NotFound"; // Import the NotFound component
+import NotFound from "./NotFound"; 
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 const App = (props) => {
   const dispatch = useDispatch();
-  const location = useLocation(); // Get the current location (URL)
+  const location = useLocation(); 
 
   useEffect(() => {
     dispatch(handleInitialData());
@@ -34,7 +34,7 @@ const App = (props) => {
         {props.loading ? (
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate to="/login" />} /> {/* Redirect all unknown paths to login */}
+            <Route path="*" element={<Navigate to="/login" />} /> 
           </Routes>
         ) : (
           <Fragment>
@@ -44,7 +44,7 @@ const App = (props) => {
               <Route path="/add" element={<RequireAuth><NewPoll /></RequireAuth>} />
               <Route path="/leaderboard" element={<RequireAuth><Leaderboard /></RequireAuth>} />
               <Route path="/login" element={<Login />} />
-              <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFound />} /> 
             </Routes>
           </Fragment>
         )}
@@ -55,7 +55,7 @@ const App = (props) => {
 
 const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
-  authedUser, // Pass authedUser to use in the component
+  authedUser, 
 });
 
 export default connect(mapStateToProps)(App);
