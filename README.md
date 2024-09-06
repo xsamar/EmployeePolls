@@ -1,19 +1,24 @@
-# Chirper Project
+## Employee Polls Project
 
-This repo is a code-along with the first project in the React Nanodegree program.
+This repo contains the code for the Employee Polls app, a project built as part of the React & Redux learning program. The app allows users to log in, view polls, answer questions, and create new polls, while managing state efficiently using Redux.
 
-Most of the commits in this repository correspond to videos in the program.
 
 ## Project Setup
 
-- Clone the Project.
+- Clone or download the project: `git clone https://github.com/Samars7/EmployeePolls.git`
+- Navigate to the project directory: `cd EmployeePolls`
 - Install the dependencies: `npm install`
+
+
+## Launching the Application
+- Start the development server: `npm start`
+- Open the app in your browser at: `http://localhost:3000`
+
 
 ## Contributing
 
-Because this is a code-along project and the commits correspond to specific videos in the program, we will not be accepting pull requests.
+This project is built as part of a learning program, and thus, we are not accepting pull requests. If you encounter any issues or have suggestions, feel free to open an issue to discuss the problem and potential solutions.
 
-If you feel like there's a major problem, please open an issue to discuss the problem and potential resolution.
 
 ## License
 

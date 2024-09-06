@@ -378,3 +378,54 @@ code {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+/* styles.css or your main CSS file */
+.not-found {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.not-found h2 {
+  font-size: 2.5rem;
+  color: #ff6b6b; /* Red color to indicate error */
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.not-found a {
+  text-decoration: none;
+  color: #007bff;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.not-found a:hover {
+  text-decoration: underline;
+}
+.segment-control {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.segment-control button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.segment-control button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.segment-control button:hover {
+  background-color: #e0e0e0;
+}

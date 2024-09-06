@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import RequireAuth from "./RequireAuth";
 import Dashboard from "./Dashboard";
@@ -9,25 +9,32 @@ import Leaderboard from "./Leaderboard";
 import PollDetails from "./PollDetails";
 import Nav from "./Nav";
 import Login from "./Login";
-import NotFound from "./NotFound";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import NotFound from "./NotFound"; // Import the NotFound component
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 const App = (props) => {
-  useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, []);
+  const dispatch = useDispatch();
+  const location = useLocation(); // Get the current location (URL)
 
+  useEffect(() => {
+    dispatch(handleInitialData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!props.authedUser && location.pathname !== "/login") {
+      localStorage.setItem("redirectAfterLogin", location.pathname);
+    }
+  }, [props.authedUser, location.pathname]);
 
   return (
     <Fragment>
       <LoadingBar />
       <div className="container">
         <Nav />
-        {props.loading === true ? (
+        {props.loading ? (
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="*" element={<Navigate to="/login" />} /> {/* Redirect all unknown paths to login */}
           </Routes>
         ) : (
           <Fragment>
@@ -37,7 +44,7 @@ const App = (props) => {
               <Route path="/add" element={<RequireAuth><NewPoll /></RequireAuth>} />
               <Route path="/leaderboard" element={<RequireAuth><Leaderboard /></RequireAuth>} />
               <Route path="/login" element={<Login />} />
-              <Route path="*" element={<RequireAuth><NotFound /></RequireAuth>} />
+              <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 */}
             </Routes>
           </Fragment>
         )}
@@ -48,6 +55,7 @@ const App = (props) => {
 
 const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
+  authedUser, // Pass authedUser to use in the component
 });
 
 export default connect(mapStateToProps)(App);

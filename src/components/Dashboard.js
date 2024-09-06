@@ -3,27 +3,42 @@ import { connect } from "react-redux";
 import Poll from "./Poll";
 
 const Dashboard = ({ answered, unanswered }) => {
+  // State to toggle between unanswered and answered questions
+  const [showAnswered, setShowAnswered] = useState(false);
+
   return (
     <div className="dashboard">
-      <h3 className="center">New Questions</h3>
-      <div className="questions-section">
-        <div className="questions-list">
-          {unanswered.map((id) => (
-            <div key={id}>
-              <Poll id={id} />
-            </div>
-          ))}
-        </div>
+      <h3 className="center">Questions</h3>
+
+      {/* Segment control */}
+      <div className="segment-control">
+        <button
+          className={!showAnswered ? "active" : ""}
+          onClick={() => setShowAnswered(false)}
+        >
+          Unanswered Questions
+        </button>
+        <button
+          className={showAnswered ? "active" : ""}
+          onClick={() => setShowAnswered(true)}
+        >
+          Answered Questions
+        </button>
       </div>
-      
-      <h3 className="center">Answered Questions</h3>
+
       <div className="questions-section">
         <div className="questions-list">
-          {answered.map((id) => (
-            <div key={id}>
-              <Poll id={id} />
-            </div>
-          ))}
+          {!showAnswered
+            ? unanswered.map((id) => (
+                <div key={id}>
+                  <Poll id={id} />
+                </div>
+              ))
+            : answered.map((id) => (
+                <div key={id}>
+                  <Poll id={id} />
+                </div>
+              ))}
         </div>
       </div>
     </div>
@@ -40,8 +55,12 @@ const mapStateToProps = ({ authedUser, questions, users }) => {
   );
 
   return {
-    unanswered: unanswered.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
-    answered: answered.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
+    unanswered: unanswered.sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    ),
+    answered: answered.sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    ),
   };
 };
 
